@@ -19,6 +19,9 @@ export default function Header() {
                         <Link href="/store">Shop</Link>
                     </li>
                     <li>
+                        <Link href="/admin">Admin</Link>
+                    </li>
+                    <li>
                         <button
                             type="button"
                             onClick={() => signOut()}
@@ -41,6 +44,9 @@ export default function Header() {
                 </li>
                 <li>
                     <Link href="/store">Shop</Link>
+                </li>
+                <li>
+                        <Link href="/admin">Admin</Link>
                 </li>
                 <li>
                     <button onClick={() => signIn()} 
