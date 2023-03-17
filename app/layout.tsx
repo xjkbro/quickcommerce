@@ -1,4 +1,4 @@
-import "../styles/globals.css";
+import "@/styles/globals.css";
 import { Session } from "next-auth";
 import { headers } from "next/headers";
 import AuthContext from "./AuthContext";

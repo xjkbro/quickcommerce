@@ -2,7 +2,6 @@
 import Link from 'next/Link'
 import { useSession, signIn, signOut } from "next-auth/react"
 
-
 export default function Header() {
     const { data: session, status } = useSession()
 
@@ -20,6 +19,9 @@ export default function Header() {
                     </li>
                     <li>
                         <Link href="/admin">Admin</Link>
+                    </li>
+                    <li>
+                        <Link href="/admin/products">Products</Link>
                     </li>
                     <li>
                         <button
