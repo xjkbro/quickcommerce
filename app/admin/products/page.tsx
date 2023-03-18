@@ -33,7 +33,7 @@ export default async function Products() {
 
 const getProducts = async () => {
     try {
-        const res = await fetch(`http://localhost:3000/api/products`, {
+        const res = await fetch(`${process.env.NEXTAUTH_URL}/api/products`, {
             next: { revalidate: 60 },
         });
         const data = await res.json();
