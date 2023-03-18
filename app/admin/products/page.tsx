@@ -13,7 +13,7 @@ export default async function Products() {
     // const products = data?.products;
       return (
         <main>
-         {/* {
+         {
          (products && products?.length > 0 ) ? <>{
             products.map((p:any, i:number)=> 
                 <div key={i} className="flex gap-4">
@@ -24,7 +24,7 @@ export default async function Products() {
                 </div>
             )}</>
         : <></>
-        } */}
+        }
         </main>
       )
 }
@@ -43,17 +43,11 @@ async function getHello() {
   }
 
 async function getData() {
-    const res = await fetch('http://localhost:3000/api/products');
-    // The return value is *not* serialized
-    // You can return Date, Map, Set, etc.
-  
-    // Recommendation: handle errors
-    if (!res.ok) {
-      // This will activate the closest `error.js` Error Boundary
+    fetch('http://localhost:3000/api/products').then(res => {return res.json()}).catch((error) => {
       throw new Error('Failed to fetch data');
-    }
-  
-    return res.json();
+
+    });
+    
   }
 
   
