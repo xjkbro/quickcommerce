@@ -25,25 +25,26 @@ import { prisma } from "@/lib/prisma";
 
 // export default handler;
 const handler = async (req, res) => {
-    prisma.product.findMany({
+    // try {
+    const product = await prisma.product.findMany({
         select: {
             id: true,
             title: true,
             description: true,
+            image: true,
             price: true,
         },
         orderBy: {
             createdAt: "desc",
         },
-    }).then((product) => {
-        // console.log(product)
-        res.status(200).json({ product });
-    }).catch((error) => {
-        res.status(500).json({
-            message: "Something went wrong!! Please try again after sometime",
-        })
-    })
-}
+    });
+    // console.log(product);
+    return res.status(200).send(JSON.stringify(product));
+    // } catch (error) {
+    //     return res.status(500).json({
+    //         message: "Something went wrong!! Please try again after sometime",
+    //     });
+    // }
+};
 
-
-export default handler
+export default handler;
