@@ -1,9 +1,9 @@
-"use client"
-import Link from 'next/Link'
-import { useSession, signIn, signOut } from "next-auth/react"
+"use client";
+import Link from "next/link";
+import { useSession, signIn, signOut } from "next-auth/react";
 
 export default function Header() {
-    const { data: session, status } = useSession()
+    const { data: session, status } = useSession();
 
     if (status == "authenticated") {
         return (
@@ -34,7 +34,7 @@ export default function Header() {
                     </li>
                 </ul>
             </nav>
-        )
+        );
     }
     return (
         <nav className="flex items-center justify-between h-24 mx-24">
@@ -48,14 +48,17 @@ export default function Header() {
                     <Link href="/store">Shop</Link>
                 </li>
                 <li>
-                        <Link href="/admin">Admin</Link>
+                    <Link href="/admin">Admin</Link>
                 </li>
                 <li>
-                    <button onClick={() => signIn()} 
+                    <button
+                        onClick={() => signIn()}
                         className="text-sm font-medium text-center"
-                        >Sign in</button>
+                    >
+                        Sign in
+                    </button>
                 </li>
             </ul>
         </nav>
-    )
+    );
 }
