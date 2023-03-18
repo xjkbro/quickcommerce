@@ -1,9 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
+import { url } from "inspector";
 import Image from "next/image";
 
 export default async function Products() {
-    const data = await getProducts();
-    const products = data?.product;
+    const products = await getProducts();
+    // const products = data?.product;
     console.log(products);
     return (
         <main>
@@ -33,9 +34,9 @@ export default async function Products() {
 
 const getProducts = async () => {
     try {
-        const res = await fetch(`${process.env.NEXTAUTH_URL}/api/products`, {
-            next: { revalidate: 60 },
-        });
+        const url = `${process.env.NEXTAUTH_URL}/api/products`;
+        const res = await fetch(url);
+        console.log(url, res);
         const data = await res.json();
         return data;
     } catch (error) {
