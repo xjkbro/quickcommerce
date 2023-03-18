@@ -5,12 +5,14 @@ import {
     randProductAdjective,
 } from "@ngneat/falso";
 import { PrismaClient } from "@prisma/client";
-
 const primsa = new PrismaClient();
 
-const createSlug = (title:string) => {
-    return title.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '');
-}
+const createSlug = (title: string) => {
+    return title
+        .toLowerCase()
+        .replace(/ /g, "-")
+        .replace(/[^\w-]+/g, "");
+};
 const main = async () => {
     try {
         await primsa.category.deleteMany();
