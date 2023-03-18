@@ -8,25 +8,36 @@ export default async function Products() {
     // const products = data?.product;
     // console.log(products);
     return (
-        <main className="w-3/4 mx-auto flex flex-col gap-4">
+        <main className="grid md:grid-cols-3 mx-auto w-full justify-center gap-4 px-2">
             {products && products?.length > 0 ? (
                 <>
-                    {products.map((p: any, i: number) => (
+                    {products.map((product: any, i: number) => (
                         <Link
-                            href={`/admin/products/${p.id}`}
+                            href={`/admin/products/${product.id}`}
                             key={i}
-                            className="flex items-center gap-4 p-4  shadow-lg rounded-xl"
+                            className="flex max-w-md bg-white shadow-lg rounded-lg overflow-hidden mx-auto"
                         >
                             <Image
-                                src={p.image}
-                                alt={p.title}
-                                width={100}
-                                height={100}
+                                src={product.image}
+                                className="w-1/3 object-cover"
+                                width={200}
+                                height={200}
+                                alt={product.title}
                             />
-                            <div className="">{p.id}</div>
-                            <div className="">{p.title}</div>
-                            <div className="">{p.description}</div>
-                            <div className="">${p.price}</div>
+                            <div className="w-2/3 p-4">
+                                <h1 className="text-gray-900 font-bold text-2xl">
+                                    {product.title}
+                                </h1>
+                                <p className="mt-2 text-gray-600 text-sm">
+                                    {product.description.substr(0, 120)}
+                                </p>
+
+                                <div className="flex item-center justify-between mt-3">
+                                    <h1 className="text-gray-700 font-bold text-xl">
+                                        ${product.price}
+                                    </h1>
+                                </div>
+                            </div>
                         </Link>
                     ))}
                 </>

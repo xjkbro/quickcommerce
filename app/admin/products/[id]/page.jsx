@@ -5,10 +5,6 @@ export default async function ProductID({ params }) {
 
     return (
         <div>
-            <div>{product.id}</div>
-            <div>{product.image}</div>
-            <div>{product.title}</div>
-            <div>{product.description}</div>
             <ProductForm product={product} />
         </div>
     );

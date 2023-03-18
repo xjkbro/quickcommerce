@@ -7,8 +7,13 @@ export default function Header() {
 
     if (status == "authenticated") {
         return (
-            <nav className="flex items-center justify-between h-24 mx-24">
-                <Link href="/">JKDELARA</Link>
+            <nav className="flex flex-col md:flex-row items-center md:justify-between md:mt-0 mt-4 h-24 mx-24">
+                <Link
+                    className="text-2xl font-bold text-gray-800 md:text-3xl"
+                    href="/"
+                >
+                    JKDELARA
+                </Link>
 
                 <ul className="flex justify-around gap-8">
                     <li>
@@ -24,11 +29,7 @@ export default function Header() {
                         <Link href="/admin/products">Products</Link>
                     </li>
                     <li>
-                        <button
-                            type="button"
-                            onClick={() => signOut()}
-                            className="text-sm font-medium text-center"
-                        >
+                        <button type="button" onClick={() => signOut()}>
                             Logout
                         </button>
                     </li>
@@ -37,8 +38,13 @@ export default function Header() {
         );
     }
     return (
-        <nav className="flex items-center justify-between h-24 mx-24">
-            <Link href="/">JKDELARA</Link>
+        <nav className="flex flex-col md:flex-row items-center md:justify-between md:mt-0 mt-4 h-24 mx-24">
+            <Link
+                className="text-2xl font-bold text-gray-800 md:text-3xl"
+                href="/"
+            >
+                JKDELARA
+            </Link>
 
             <ul className="flex justify-around gap-8">
                 <li>
@@ -51,11 +57,11 @@ export default function Header() {
                     <Link href="/admin">Admin</Link>
                 </li>
                 <li>
-                    <button
-                        onClick={() => signIn()}
-                        className="text-sm font-medium text-center"
-                    >
-                        Sign in
+                    <Link href="/admin/products">Products</Link>
+                </li>
+                <li>
+                    <button type="button" onClick={() => signIn()}>
+                        Login
                     </button>
                 </li>
             </ul>
