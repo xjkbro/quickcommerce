@@ -9,6 +9,7 @@ const handler = async (req, res) => {
             title: true,
             description: true,
             short_description: true,
+            averageRating: true,
             image: true,
             category: true,
             available: true,

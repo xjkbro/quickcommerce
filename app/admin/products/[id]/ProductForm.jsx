@@ -20,7 +20,12 @@ export default function ProductForm({ product }) {
     const [image, setImage] = useState(product.image);
     const [price, setPrice] = useState(product.price);
     const [available, setAvailable] = useState(product.available);
-
+    const createSlug = (title) => {
+        return title
+            .toLowerCase()
+            .replace(/ /g, "-")
+            .replace(/[^\w-]+/g, "");
+    };
     console.log(title, description, image);
     async function handleSubmit(e) {
         e.preventDefault();
@@ -105,15 +110,28 @@ export default function ProductForm({ product }) {
                                 >
                                     Slug
                                 </label>
-                                <input
-                                    type="text"
-                                    name="slug"
-                                    id="slug"
-                                    className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-                                    onChange={(e) => setSlug(e.target.value)}
-                                    value={slug}
-                                    disabled={isPending}
-                                />
+                                <div className="w-full">
+                                    <input
+                                        type="text"
+                                        name="slug"
+                                        id="slug"
+                                        className="w-5/6 rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                                        onChange={(e) =>
+                                            setSlug(e.target.value)
+                                        }
+                                        value={slug}
+                                        disabled={isPending}
+                                    />
+                                    <button
+                                        className="w-1/6"
+                                        onClick={(e) => {
+                                            e.preventDefault();
+                                            setSlug(createSlug(title));
+                                        }}
+                                    >
+                                        Generate
+                                    </button>
+                                </div>
                             </div>
                         </div>
                         <div className="w-full px-3">
@@ -146,6 +164,7 @@ export default function ProductForm({ product }) {
                                 <input
                                     type="number"
                                     step={0.01}
+                                    min={0}
                                     name="price"
                                     id="price"
                                     className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"

@@ -27,39 +27,71 @@ export default async function Store() {
                                         {product.title}
                                     </h2>
                                     <div className="mt-2 text-gray-600 text-sm">
-                                        {product.description.substr(0, 120)}
+                                        {product.short_description}
                                     </div>
-                                    <div className="flex item-center mt-2">
-                                        <svg
-                                            className="w-5 h-5 fill-current text-gray-700"
-                                            viewBox="0 0 24 24"
+                                    <div className="flex item-center mt-2 w-1/2">
+                                        <div
+                                            className={`star-${parseInt(
+                                                product?.averageRating
+                                            )} h-5 flex items-center overflow-hidden`}
                                         >
-                                            <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" />
-                                        </svg>
-                                        <svg
-                                            className="w-5 h-5 fill-current text-gray-700"
-                                            viewBox="0 0 24 24"
-                                        >
-                                            <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" />
-                                        </svg>
-                                        <svg
-                                            className="w-5 h-5 fill-current text-gray-700"
-                                            viewBox="0 0 24 24"
-                                        >
-                                            <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" />
-                                        </svg>
-                                        <svg
-                                            className="w-5 h-5 fill-current text-gray-500"
-                                            viewBox="0 0 24 24"
-                                        >
-                                            <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" />
-                                        </svg>
-                                        <svg
-                                            className="w-5 h-5 fill-current text-gray-500"
-                                            viewBox="0 0 24 24"
-                                        >
-                                            <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" />
-                                        </svg>
+                                            <div className="w-[6.25rem] flex">
+                                                <svg
+                                                    className="w-5 h-5 fill-current text-yellow-400 "
+                                                    viewBox="0 0 24 24"
+                                                >
+                                                    <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" />
+                                                </svg>
+                                                <svg
+                                                    className="w-5 h-5 fill-current text-yellow-400 "
+                                                    viewBox="0 0 24 24"
+                                                >
+                                                    <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" />
+                                                </svg>
+                                                <svg
+                                                    className="w-5 h-5 fill-current text-yellow-400 "
+                                                    viewBox="0 0 24 24"
+                                                >
+                                                    <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" />
+                                                </svg>
+                                                <svg
+                                                    className="w-5 h-5 fill-current text-yellow-400 "
+                                                    viewBox="0 0 24 24"
+                                                >
+                                                    <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" />
+                                                </svg>
+                                                <svg
+                                                    className="w-5 h-5 fill-current text-yellow-400 "
+                                                    viewBox="0 0 24 24"
+                                                >
+                                                    <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" />
+                                                </svg>
+                                            </div>
+                                            {/* <svg
+                                                className="w-5 h-5 fill-current text-gray-700"
+                                                viewBox="0 0 24 24"
+                                            >
+                                                <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" />
+                                            </svg>
+                                            <svg
+                                                className="w-5 h-5 fill-current text-gray-700"
+                                                viewBox="0 0 24 24"
+                                            >
+                                                <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" />
+                                            </svg>
+                                            <svg
+                                                className="w-5 h-5 fill-current text-gray-500"
+                                                viewBox="0 0 24 24"
+                                            >
+                                                <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" />
+                                            </svg>
+                                            <svg
+                                                className="w-5 h-5 fill-current text-gray-500"
+                                                viewBox="0 0 24 24"
+                                            >
+                                                <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" />
+                                            </svg> */}
+                                        </div>
                                     </div>
                                 </div>
                                 <div className="flex item-center justify-between mt-3">

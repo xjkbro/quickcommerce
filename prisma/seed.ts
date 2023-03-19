@@ -23,6 +23,13 @@ const createSlug = (title: string) => {
         .replace(/ /g, "-")
         .replace(/[^\w-]+/g, "");
 };
+function generateRandomRating() {
+    var min = 0,
+        max = 5,
+        highlightedNumber = Math.random() * (max - min) + min;
+    return parseFloat(highlightedNumber.toFixed(1));
+}
+
 const main = async () => {
     try {
         await primsa.category.deleteMany();
@@ -46,6 +53,7 @@ const main = async () => {
                     price: parseFloat(product.price),
                     quantity: randNumber({ min: 1, max: 20 }),
                     image: `${product.image}/tech`,
+                    averageRating: generateRandomRating(),
                     available: true,
                     visible: true,
                     category: {

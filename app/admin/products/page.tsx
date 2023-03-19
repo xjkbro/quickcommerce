@@ -11,13 +11,13 @@ export default async function Products({ searchParams }: any) {
     console.log(products[0]);
     return (
         <div className="bg-white p-8 rounded-md w-full">
-            <div className=" flex items-center justify-between pb-6">
+            <div className=" flex items-center justify-between pb-6 gap-12">
                 <div>
                     <h2 className="text-gray-600 font-semibold">Products</h2>
                     {/* <span className="text-xs">All products item</span> */}
                 </div>
-                <div className="flex items-center justify-between">
-                    <div className="flex bg-gray-50 items-center p-2 rounded-md">
+                <div className="flex items-center w-full justify-between">
+                    <div className="flex w-full bg-gray-50 items-center p-2 rounded-md">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             className="h-5 w-5 text-gray-400"
@@ -32,16 +32,16 @@ export default async function Products({ searchParams }: any) {
                         </svg>
                         <SearchProduct search={searchParams} />
                     </div>
-                    <div className="lg:ml-40 ml-10 space-x-8">
-                        {/* <button className="bg-indigo-600 px-4 py-2 rounded-md text-white font-semibold tracking-wide cursor-pointer">
+                </div>
+                <div className="">
+                    {/* <button className="bg-indigo-600 px-4 py-2 rounded-md text-white font-semibold tracking-wide cursor-pointer">
                             New Report
                         </button> */}
-                        <Link href={"/admin/products/add"}>
-                            <button className="bg-indigo-600 px-4 py-2 rounded-md text-white font-semibold tracking-wide cursor-pointer">
-                                Create
-                            </button>
-                        </Link>
-                    </div>
+                    <Link href={"/admin/products/add"}>
+                        <button className="bg-indigo-600 px-4 py-2 rounded-md text-white font-semibold tracking-wide cursor-pointer">
+                            Create
+                        </button>
+                    </Link>
                 </div>
             </div>
             <div>

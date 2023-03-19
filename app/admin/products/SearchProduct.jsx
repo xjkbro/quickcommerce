@@ -31,7 +31,7 @@ export default function SearchProduct({ search }) {
     }
     return (
         <input
-            className="bg-gray-50 outline-none ml-1 block "
+            className="bg-gray-50 outline-none ml-1 block w-full"
             type="text"
             name="search"
             id=""

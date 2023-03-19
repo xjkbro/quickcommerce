@@ -14,10 +14,16 @@ export default function Add() {
     const [slug, setSlug] = useState("");
     const [shortDescription, setShortDescription] = useState("");
     const [description, setDescription] = useState("");
-    const [image, setImage] = useState("");
+    const [image, setImage] = useState("https://placeimg.com/500/500/tech");
     const [price, setPrice] = useState("");
     const [available, setAvailable] = useState(true);
 
+    const createSlug = (title) => {
+        return title
+            .toLowerCase()
+            .replace(/ /g, "-")
+            .replace(/[^\w-]+/g, "");
+    };
     async function handleSubmit(e) {
         e.preventDefault();
         setSavedData(false);
@@ -90,15 +96,28 @@ export default function Add() {
                                 >
                                     Slug
                                 </label>
-                                <input
-                                    type="text"
-                                    name="slug"
-                                    id="slug"
-                                    className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-                                    onChange={(e) => setSlug(e.target.value)}
-                                    value={slug}
-                                    disabled={isPending}
-                                />
+                                <div className="w-full">
+                                    <input
+                                        type="text"
+                                        name="slug"
+                                        id="slug"
+                                        className="w-5/6 rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                                        onChange={(e) =>
+                                            setSlug(e.target.value)
+                                        }
+                                        value={slug}
+                                        disabled={isPending}
+                                    />
+                                    <button
+                                        className="w-1/6"
+                                        onClick={(e) => {
+                                            e.preventDefault();
+                                            setSlug(createSlug(title));
+                                        }}
+                                    >
+                                        Generate
+                                    </button>
+                                </div>
                             </div>
                         </div>
                         <div className="w-full px-3">
@@ -131,6 +150,7 @@ export default function Add() {
                                 <input
                                     type="number"
                                     step={0.01}
+                                    min={0}
                                     name="price"
                                     id="price"
                                     className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"

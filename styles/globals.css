@@ -2,3 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 @import url(https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.min.css);
+
+.star-1 {
+    width: 1.25rem;
+}
+.star-2 {
+    width: 2.5rem;
+}
+.star-3 {
+    width: 3.75rem;
+}
+.star-4 {
+    width: 5rem;
+}
+.star-5 {
+    width: 6.25rem;
+}
