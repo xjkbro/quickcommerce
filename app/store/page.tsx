@@ -5,9 +5,9 @@ export default async function Store() {
     const products = await getProducts();
 
     return (
-        <div className="grid md:grid-cols-3 mx-auto w-full justify-center gap-4 px-2">
+        <div className="w-full bg-yellow-300 justify-center p-2">
             {products && products?.length > 0 ? (
-                <>
+                <div className="w-full md:w-3/4 grid md:grid-cols-3 mx-auto gap-4">
                     {products.map((product: any, i: number) => (
                         <Link
                             href={`/store/product/${product.id}`}
@@ -70,7 +70,7 @@ export default async function Store() {
                             </div>
                         </Link>
                     ))}
-                </>
+                </div>
             ) : (
                 ""
             )}

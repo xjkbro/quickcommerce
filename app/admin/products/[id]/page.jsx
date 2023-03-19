@@ -1,5 +1,6 @@
 import ProductForm from "./ProductForm";
 import { cache } from "react";
+import Link from "next/link";
 export default async function ProductID({ params }) {
     const product = await getProduct(params.id);
 

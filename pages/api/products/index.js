@@ -5,9 +5,13 @@ const handler = async (req, res) => {
     const product = await prisma.product.findMany({
         select: {
             id: true,
+            slug: true,
             title: true,
             description: true,
+            // description: true,
             image: true,
+            category: true,
+            available: true,
             price: true,
         },
         orderBy: {

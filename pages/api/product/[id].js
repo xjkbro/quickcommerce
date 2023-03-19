@@ -9,8 +9,9 @@ const handler = async (req, res) => {
     // console.log(req.query);
     // console.log(JSON.parse(req.body));
     if (req.method == "PUT") {
-        const { title, description, image } = JSON.parse(req.body);
-        console.log("TITLE:" + title);
+        const { title, description, image, shortDescription, slug, price } =
+            JSON.parse(req.body);
+        // console.log("TITLE:" + title);
         const product = await prisma.product.update({
             where: {
                 id: id,
@@ -19,12 +20,15 @@ const handler = async (req, res) => {
                 title: title,
                 description: description,
                 image: image,
+                slug: slug,
+                price: price,
+                short_description: shortDescription,
             },
         });
         // const asd = await prisma.category.findFirst({
         //     where: { id: "clfcsdoov005ogmhc2mytzhv0" },
         // });
-        console.log("PUT: " + product);
+        // console.log("PUT: " + product);
         // console.log("TITLE: " + asd);
 
         return res
@@ -40,7 +44,7 @@ const handler = async (req, res) => {
                 id: id,
             },
         });
-        console.log("GET");
+        // console.log("GET");
         // console.log(product);
         return res.status(200).send(JSON.stringify(product));
     }
