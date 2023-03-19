@@ -64,7 +64,26 @@ export default async function Store() {
                                 </div>
                                 <div className="flex item-center justify-between mt-3">
                                     <h2 className="text-gray-700 font-bold text-xl">
-                                        ${product.price}
+                                        {/* ${product.price} */}
+                                        {`$${
+                                            product.price
+                                                .toString()
+                                                .split(".")[0]
+                                        }.${
+                                            product.price
+                                                .toString()
+                                                .split(".")[1]
+                                                ? product.price
+                                                      .toString()
+                                                      .split(".")[1].length == 1
+                                                    ? product.price
+                                                          .toString()
+                                                          .split(".")[1] + "0"
+                                                    : product.price
+                                                          .toString()
+                                                          .split(".")[1]
+                                                : "00"
+                                        }`}
                                     </h2>
                                 </div>
                             </div>

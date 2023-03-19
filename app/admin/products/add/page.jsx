@@ -3,25 +3,21 @@ import { useEffect, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
-export default function ProductForm({ product }) {
+export default function Add() {
     const router = useRouter();
     const [isPending, startTransition] = useTransition();
     const [isFetching, setIsFetching] = useState(false);
 
     const [savedData, setSavedData] = useState(false);
 
-    console.log(product);
-    const [title, setTitle] = useState(product.title);
-    const [slug, setSlug] = useState(product.slug);
-    const [shortDescription, setShortDescription] = useState(
-        product.short_description
-    );
-    const [description, setDescription] = useState(product.description);
-    const [image, setImage] = useState(product.image);
-    const [price, setPrice] = useState(product.price);
-    const [available, setAvailable] = useState(product.available);
+    const [title, setTitle] = useState("");
+    const [slug, setSlug] = useState("");
+    const [shortDescription, setShortDescription] = useState("");
+    const [description, setDescription] = useState("");
+    const [image, setImage] = useState("");
+    const [price, setPrice] = useState("");
+    const [available, setAvailable] = useState(true);
 
-    console.log(title, description, image);
     async function handleSubmit(e) {
         e.preventDefault();
         setSavedData(false);
@@ -29,43 +25,32 @@ export default function ProductForm({ product }) {
         console.log(e);
         setIsFetching(true);
 
-        // const url = `${process.env.NEXTAUTH_URL}/api/product/${product.id}`;
-        // console.log(url);
-        const res = await fetch(
-            `${process.env.NEXTAUTH_URL}/api/product/${product.id}`,
-            {
-                method: "PUT",
-                body: JSON.stringify({
-                    title,
-                    slug,
-                    shortDescription,
-                    description,
-                    price: parseFloat(price),
-                    image,
-                    available,
-                }),
-            }
-        );
+        const res = await fetch(`${process.env.NEXTAUTH_URL}/api/product/add`, {
+            method: "POST",
+            body: JSON.stringify({
+                title,
+                slug,
+                shortDescription,
+                description,
+                price,
+                image,
+                available,
+            }),
+        });
         const data = await res.json();
-        console.log("POSTED: " + data);
         // setTitle(res.title);
         setIsFetching(false);
         startTransition(() => {
             // Refresh the current route and fetch new data from the server without
             // losing client-side browser or React state.
-            router.refresh();
+            // router.refresh();
+            router.push("/admin/products/" + data?.id);
             setSavedData(true);
         });
     }
     return (
         <div className="flex items-center justify-center p-12">
             <div className="mx-auto w-full max-w-[550px]">
-                <Link
-                    href={`/store/product/${product.id}`}
-                    className="flex justify-end font-bold hover:underline"
-                >
-                    Go To Product
-                </Link>
                 {savedData ? (
                     <div
                         className="w-full h-24 flex justify-center items-center border-4 border-green-300 bg-green-100 text-green-600 rounded-lg my-4"

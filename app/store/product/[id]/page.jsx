@@ -29,7 +29,11 @@ export default async function ProductID({ params }) {
                             <ProductDescription desc={product.description} />
                         </div>
                         <div>
-                            <div className="inline-block align-bottom mr-5">
+                            <div
+                                className={`inline-block align-bottom mr-5 ${
+                                    product.available ? "" : "text-gray-400"
+                                }`}
+                            >
                                 <span className="text-2xl leading-none align-baseline">
                                     $
                                 </span>
@@ -39,6 +43,16 @@ export default async function ProductID({ params }) {
                                 <span className="text-2xl leading-none align-baseline">
                                     {`.${
                                         product.price.toString().split(".")[1]
+                                            ? product.price
+                                                  .toString()
+                                                  .split(".")[1].length == 1
+                                                ? product.price
+                                                      .toString()
+                                                      .split(".")[1] + "0"
+                                                : product.price
+                                                      .toString()
+                                                      .split(".")[1]
+                                            : "00"
                                     }`}
                                 </span>
                             </div>

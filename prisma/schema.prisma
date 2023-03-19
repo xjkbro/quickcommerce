@@ -77,7 +77,7 @@ model Product {
     id                String    @id @default(cuid())
     title             String    @unique
     slug              String    @unique
-    description       String
+    description       String    @db.VarChar(10000)
     short_description String?
     price             Float
     quantity          Int

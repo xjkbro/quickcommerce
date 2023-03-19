@@ -28,6 +28,7 @@ export default function AddToCart({ product }) {
             }
         }
     );
+    console.log(product.available);
     return (
         <div className="inline-block align-bottom">
             <button
@@ -39,8 +40,10 @@ export default function AddToCart({ product }) {
                         price: product.price,
                     })
                 }
-                disabled={mutationIsLoading}
-                className="bg-yellow-300 opacity-75 hover:opacity-100 text-yellow-900 hover:text-gray-900 rounded-full px-10 py-2 font-semibold"
+                disabled={mutationIsLoading || !product.available}
+                className={`bg-yellow-300 ${
+                    product.available ? "opacity-100" : "opacity-75"
+                } hover:opacity-75  rounded-full px-10 py-2 font-semibold`}
             >
                 <i className="mdi mdi-cart -ml-2 mr-2"></i> BUY NOW
             </button>

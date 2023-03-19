@@ -16,22 +16,18 @@ export default function SearchProduct({ search }) {
     async function handleChnage(e) {
         e.preventDefault();
         setSearchString(e.target.value);
-        // setIsFetching(true);
+        setIsFetching(true);
         // const res = await fetch(
         //     `${process.env.NEXTAUTH_URL}/api/products/${search}`
         // );
-        // // // console.log("TEST " + (await res.json()));
-        // // // res
-        // // products = await res.json();
-        // // setTitle(res.title);
-        // setIsFetching(false);
-        // startTransition(() => {
-        //     // Refresh the current route and fetch new data from the server without
-        //     // losing client-side browser or React state.
-        //     router.refresh();
-        // console.log(pathname + "?s=" + searchString);
-        router.push(pathname + "?s=" + e.target.value);
-        // });
+        setIsFetching(false);
+        startTransition(() => {
+            // Refresh the current route and fetch new data from the server without
+            // losing client-side browser or React state.
+            // router.refresh();
+            // console.log(pathname + "?s=" + searchString);
+            router.push(pathname + "?s=" + e.target.value);
+        });
     }
     return (
         <input

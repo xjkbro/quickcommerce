@@ -8,7 +8,7 @@ const handler = async (req, res) => {
             slug: true,
             title: true,
             description: true,
-            // description: true,
+            short_description: true,
             image: true,
             category: true,
             available: true,

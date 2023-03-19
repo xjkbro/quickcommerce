@@ -13,8 +13,19 @@ const handler = async (req, res) => {
                     contains: search,
                 },
             },
+            select: {
+                id: true,
+                title: true,
+                slug: true,
+                image: true,
+                short_description: true,
+                description: true,
+                available: true,
+                price: true,
+                category: true,
+            },
         });
-        // console.log(products);
+        console.log(products);
         return res.status(200).send(JSON.stringify(products));
     }
 };

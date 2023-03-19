@@ -36,9 +36,11 @@ export default async function Products({ searchParams }: any) {
                         {/* <button className="bg-indigo-600 px-4 py-2 rounded-md text-white font-semibold tracking-wide cursor-pointer">
                             New Report
                         </button> */}
-                        <button className="bg-indigo-600 px-4 py-2 rounded-md text-white font-semibold tracking-wide cursor-pointer">
-                            Create
-                        </button>
+                        <Link href={"/admin/products/add"}>
+                            <button className="bg-indigo-600 px-4 py-2 rounded-md text-white font-semibold tracking-wide cursor-pointer">
+                                Create
+                            </button>
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -121,16 +123,17 @@ export default async function Products({ searchParams }: any) {
                                                     <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                                         <p className="text-gray-900 whitespace-no-wrap">
                                                             {
-                                                                product.description
+                                                                product.short_description
                                                             }
                                                         </p>
                                                     </td>
                                                     <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                                         <p className="text-gray-900 whitespace-no-wrap">
-                                                            {/* {
-                                                                product.category
-                                                                    .name
-                                                            } */}
+                                                            {
+                                                                product
+                                                                    ?.category
+                                                                    ?.name
+                                                            }
                                                         </p>
                                                     </td>
                                                     <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">

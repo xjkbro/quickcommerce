@@ -4,9 +4,19 @@ import {
     randProduct,
     randProductAdjective,
 } from "@ngneat/falso";
+import { LoremIpsum } from "lorem-ipsum";
 import { PrismaClient } from "@prisma/client";
 const primsa = new PrismaClient();
-
+const lorem = new LoremIpsum({
+    sentencesPerParagraph: {
+        max: 8,
+        min: 4,
+    },
+    wordsPerSentence: {
+        max: 16,
+        min: 4,
+    },
+});
 const createSlug = (title: string) => {
     return title
         .toLowerCase()
@@ -23,6 +33,7 @@ const main = async () => {
         for (let index = 0; index < fakeProducts.length; index++) {
             const product = fakeProducts[index];
             const productAdjective = randProductAdjective();
+
             await primsa.product.upsert({
                 where: {
                     title: `${productAdjective} ${product.title}`,
@@ -30,10 +41,13 @@ const main = async () => {
                 create: {
                     title: `${productAdjective} ${product.title}`,
                     slug: createSlug(`${productAdjective} ${product.title}`),
-                    description: product.description,
+                    short_description: product.description,
+                    description: lorem.generateSentences(5),
                     price: parseFloat(product.price),
-                    quantity: randNumber({ min: 10, max: 100 }),
+                    quantity: randNumber({ min: 1, max: 20 }),
                     image: `${product.image}/tech`,
+                    available: true,
+                    visible: true,
                     category: {
                         connectOrCreate: {
                             where: {
