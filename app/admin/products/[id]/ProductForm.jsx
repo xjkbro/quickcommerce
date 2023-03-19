@@ -2,6 +2,8 @@
 import { useEffect, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowsRotate } from "@fortawesome/free-solid-svg-icons";
 
 export default function ProductForm({ product }) {
     const router = useRouter();
@@ -63,7 +65,7 @@ export default function ProductForm({ product }) {
         });
     }
     return (
-        <div className="flex items-center justify-center p-12">
+        <div className="flex items-center justify-center md:p-12 p-2">
             <div className="mx-auto w-full max-w-[550px]">
                 <Link
                     href={`/store/product/${product.id}`}
@@ -115,7 +117,7 @@ export default function ProductForm({ product }) {
                                         type="text"
                                         name="slug"
                                         id="slug"
-                                        className="w-5/6 rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                                        className="w-11/12 rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                                         onChange={(e) =>
                                             setSlug(e.target.value)
                                         }
@@ -123,13 +125,15 @@ export default function ProductForm({ product }) {
                                         disabled={isPending}
                                     />
                                     <button
-                                        className="w-1/6"
+                                        className="w-1/12"
                                         onClick={(e) => {
                                             e.preventDefault();
                                             setSlug(createSlug(title));
                                         }}
                                     >
-                                        Generate
+                                        <FontAwesomeIcon
+                                            icon={faArrowsRotate}
+                                        />
                                     </button>
                                 </div>
                             </div>

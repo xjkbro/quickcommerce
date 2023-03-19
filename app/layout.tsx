@@ -3,6 +3,7 @@ import { Session } from "next-auth";
 import { headers } from "next/headers";
 import AuthContext from "./AuthContext";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 export const metadata = {
     title: "Create Next App",
@@ -21,6 +22,7 @@ export default async function RootLayout({
                 <AuthContext session={session}>
                     <Header />
                     {children}
+                    <Footer />
                 </AuthContext>
             </body>
         </html>

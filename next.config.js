@@ -7,7 +7,11 @@ const nextConfig = {
         NEXTAUTH_URL: process.env.NEXTAUTH_URL,
     },
     images: {
-        domains: ["placeimg.com", "images.unsplash.com"],
+        domains: [
+            "placeimg.com",
+            "images.unsplash.com",
+            "avatars.githubusercontent.com",
+        ],
     },
 };
 

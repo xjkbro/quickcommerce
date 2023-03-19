@@ -7,7 +7,7 @@ export default function Header() {
 
     if (status == "authenticated") {
         return (
-            <nav className="flex flex-col md:flex-row items-center md:justify-between md:mt-0 mt-4 h-24 mx-24">
+            <nav className="sticky top-0 z-10 mx-0 px-24 w-full bg-white shadow-md pt-4 flex flex-col md:flex-row items-center md:justify-between md:mt-0 mt-4 h-24">
                 <Link
                     className="text-2xl font-bold text-gray-800 md:text-3xl"
                     href="/"
@@ -38,7 +38,7 @@ export default function Header() {
         );
     }
     return (
-        <nav className="flex flex-col md:flex-row items-center md:justify-between md:mt-0 mt-4 h-24 mx-24">
+        <nav className="sticky top-0 z-10 mx-0 px-24 w-full bg-white shadow-md pt-4 flex flex-col md:flex-row items-center md:justify-between md:mt-0 mt-4 h-24">
             <Link
                 className="text-2xl font-bold text-gray-800 md:text-3xl"
                 href="/"
