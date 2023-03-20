@@ -5,6 +5,11 @@ import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowsRotate } from "@fortawesome/free-solid-svg-icons";
 
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { dark } from "react-syntax-highlighter/dist/esm/styles/prism";
+
 export default function ProductForm({ product }) {
     const router = useRouter();
     const [isPending, startTransition] = useTransition();
@@ -65,8 +70,8 @@ export default function ProductForm({ product }) {
         });
     }
     return (
-        <div className="flex items-center justify-center md:p-12 p-2">
-            <div className="mx-auto w-full max-w-[550px]">
+        <div className="flex items-center justify-center gap-0 md:gap-4 md:p-12 p-2 w-full ">
+            <div className="mx-auto max-w-[550px]">
                 <Link
                     href={`/store/product/${product.id}`}
                     className="flex justify-end font-bold hover:underline"
@@ -244,6 +249,11 @@ export default function ProductForm({ product }) {
                         />
                     </div>
                 </form>
+            </div>
+            <div className="hidden md:block mx-auto max-w-[550px]  h-screen overflow-y-scroll border p-2 rounded-md border-rose-200">
+                <ReactMarkdown className="prose " remarkPlugins={[remarkGfm]}>
+                    {description}
+                </ReactMarkdown>
             </div>
         </div>
     );

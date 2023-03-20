@@ -1,12 +1,14 @@
 import Image from "next/image";
 import ProductDescription from "./ProductDescription";
 import AddToCart from "./AddToCart";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 export default async function ProductID({ params }) {
     const product = await getProduct(params.id);
 
     return (
-        <div className="min-w-screen min-h-screen bg-yellow-300 flex items-center p-5 lg:p-10 overflow-hidden relative">
+        <div className="min-w-screen min-h-screen bg-yellow-300 flex flex-col gap-8 md:gap-48 items-center justify-center lg:pt-32 p-5 lg:p-10 overflow-hidden relative">
             <div className="w-full max-w-6xl rounded bg-white shadow-xl p-10 lg:p-20 mx-auto text-gray-800 relative md:text-left">
                 <div className="md:flex items-center -mx-10">
                     <div className="w-full md:w-1/2 px-10 mb-10 md:mb-0">
@@ -15,7 +17,7 @@ export default async function ProductID({ params }) {
                                 src={product.image}
                                 width={400}
                                 height={400}
-                                className="w-full relative z-10"
+                                className="w-full relative z-[5]"
                                 alt={product.name}
                             />
                             <div className="border-4 border-yellow-200 absolute top-10 bottom-10 left-10 right-10 z-0"></div>
@@ -26,7 +28,9 @@ export default async function ProductID({ params }) {
                             <h1 className="font-bold uppercase text-2xl mb-5">
                                 {product.title}
                             </h1>
-                            <ProductDescription desc={product.description} />
+                            <ProductDescription
+                                desc={product.short_description}
+                            />
                         </div>
                         <div>
                             <div
@@ -60,6 +64,16 @@ export default async function ProductID({ params }) {
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <div className="w-full max-w-6xl rounded bg-white shadow-xl p-10 lg:p-20 mx-auto text-gray-800 mb-48 relative md:text-left prose">
+                <h2>Description</h2>
+                <ReactMarkdown
+                    className="mx-auto max-w-[550px] prose"
+                    remarkPlugins={[remarkGfm]}
+                >
+                    {product.description}
+                </ReactMarkdown>
             </div>
         </div>
     );
