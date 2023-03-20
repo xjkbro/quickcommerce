@@ -12,7 +12,7 @@ export default function Header() {
                     className="text-2xl font-bold text-gray-800 md:text-3xl"
                     href="/"
                 >
-                    JKDELARA
+                    QuickCommerce
                 </Link>
 
                 <ul className="flex justify-around gap-8">
@@ -43,7 +43,7 @@ export default function Header() {
                 className="text-2xl font-bold text-gray-800 md:text-3xl"
                 href="/"
             >
-                JKDELARA
+                QuickCommerce
             </Link>
 
             <ul className="flex justify-around gap-8">

@@ -20,12 +20,12 @@ export default function Home() {
                     ></span>
                     {/* </div> */}
                     <div className="container relative mx-auto">
-                        <div className="items-center justify-center flex flex-wrap">
-                            <h1 className="text-white font-semibold text-[4rem] md:text-[10rem]">
-                                JKDELARA
+                        <div className="items-center justify-center flex flex-col flex-wrap">
+                            <h1 className="text-white font-semibold text-[2rem] md:text-[8rem]">
+                                QuickCommerce
                             </h1>
                             <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
-                                <div className="pr-12">
+                                <div className="">
                                     <h2 className="text-white font-semibold text-5xl">
                                         Your story starts with us.
                                     </h2>
